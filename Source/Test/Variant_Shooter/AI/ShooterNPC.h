@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "TestCharacter.h"
+#include "../../TestCharacter.h"
 #include "ShooterWeaponHolder.h"
 #include "ShooterNPC.generated.h"
 
@@ -24,56 +24,56 @@ class TEST_API AShooterNPC : public ATestCharacter, public IShooterWeaponHolder
 public:
 
 	/** Current HP for this character. It dies if it reaches zero through damage */
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Damage")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Damage")
 	float CurrentHP = 100.0f;
 
 protected:
 
 	/** Name of the collision profile to use during ragdoll death */
-	UPROPERTY(EditAnywhere, Category="Damage")
+	UPROPERTY(EditAnywhere, Category = "Damage")
 	FName RagdollCollisionProfile = FName("Ragdoll");
 
 	/** Time to wait after death before destroying this actor */
-	UPROPERTY(EditAnywhere, Category="Damage")
+	UPROPERTY(EditAnywhere, Category = "Damage")
 	float DeferredDestructionTime = 5.0f;
 
 	/** Team byte for this character */
-	UPROPERTY(EditAnywhere, Category="Team")
+	UPROPERTY(EditAnywhere, Category = "Team")
 	uint8 TeamByte = 1;
 
 	/** Actor tag to grant this character when it dies */
-	UPROPERTY(EditAnywhere, Category="Team")
+	UPROPERTY(EditAnywhere, Category = "Team")
 	FName DeathTag = FName("Dead");
 
 	/** Pointer to the equipped weapon */
 	TObjectPtr<AShooterWeapon> Weapon;
 
 	/** Type of weapon to spawn for this character */
-	UPROPERTY(EditAnywhere, Category="Weapon")
+	UPROPERTY(EditAnywhere, Category = "Weapon")
 	TSubclassOf<AShooterWeapon> WeaponClass;
 
 	/** Name of the first person mesh weapon socket */
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category ="Weapons")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Weapons")
 	FName FirstPersonWeaponSocket = FName("HandGrip_R");
 
 	/** Name of the third person mesh weapon socket */
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category ="Weapons")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Weapons")
 	FName ThirdPersonWeaponSocket = FName("HandGrip_R");
 
 	/** Max range for aiming calculations */
-	UPROPERTY(EditAnywhere, Category="Aim")
+	UPROPERTY(EditAnywhere, Category = "Aim")
 	float AimRange = 10000.0f;
 
 	/** Cone variance to apply while aiming */
-	UPROPERTY(EditAnywhere, Category="Aim")
+	UPROPERTY(EditAnywhere, Category = "Aim")
 	float AimVarianceHalfAngle = 10.0f;
 
 	/** Minimum vertical offset from the target center to apply when aiming */
-	UPROPERTY(EditAnywhere, Category="Aim")
+	UPROPERTY(EditAnywhere, Category = "Aim")
 	float MinAimOffsetZ = -35.0f;
 
 	/** Maximum vertical offset from the target center to apply when aiming */
-	UPROPERTY(EditAnywhere, Category="Aim")
+	UPROPERTY(EditAnywhere, Category = "Aim")
 	float MaxAimOffsetZ = -60.0f;
 
 	/** Actor currently being targeted */

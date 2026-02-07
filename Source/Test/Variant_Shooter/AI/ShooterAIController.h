@@ -16,27 +16,34 @@ DECLARE_DELEGATE_OneParam(FShooterPerceptionForgottenDelegate, AActor*);
 /**
  *  Simple AI Controller for a first person shooter enemy
  */
-UCLASS(abstract)
+UCLASS() // removed 'abstract' so the engine can instantiate this controller for pawns
 class TEST_API AShooterAIController : public AAIController
 {
 	GENERATED_BODY()
-	
+
 	/** Runs the behavior StateTree for this NPC */
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components", meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	UStateTreeAIComponent* StateTreeAI;
 
 	/** Detects other actors through sight, hearing and other senses */
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components", meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	UAIPerceptionComponent* AIPerception;
 
 protected:
 
 	/** Team tag for pawn friend or foe identification */
-	UPROPERTY(EditAnywhere, Category="Shooter")
+	UPROPERTY(EditAnywhere, Category = "Shooter")
 	FName TeamTag = FName("Enemy");
 
 	/** Enemy currently being targeted */
 	TObjectPtr<AActor> TargetEnemy;
+
+	/** Timer handle used to retry move requests when initial pathfinding isn't ready */
+	FTimerHandle MoveRetryTimer;
+
+	/** How often to retry move requests (seconds) */
+	UPROPERTY(EditAnywhere, Category = "AI")
+	float MoveRetryInterval = 0.5f;
 
 public:
 
@@ -55,6 +62,9 @@ protected:
 
 	/** Pawn initialization */
 	virtual void OnPossess(APawn* InPawn) override;
+
+	/** Try to issue a MoveToActor to the player; used with a retry timer */
+	void TryMoveToPlayer();
 
 protected:
 
