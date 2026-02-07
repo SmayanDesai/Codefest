@@ -109,6 +109,7 @@ void AShooterNPC::Die()
 	if (bIsDead)
 	{
 		return;
+		Destroy();
 	}
 
 	// raise the dead flag
