@@ -1,7 +1,7 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 
-#include "Variant_Shooter/AI/ShooterNPCSpawner.h"
+#include "ShooterNPCSpawner.h"
 #include "Engine/World.h"
 #include "Components/SceneComponent.h"
 #include "Components/CapsuleComponent.h"

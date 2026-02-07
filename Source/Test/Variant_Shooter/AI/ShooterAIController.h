@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "AIController.h"
+#include "Components/StateTreeAIComponent.h"
 #include "ShooterAIController.generated.h"
 
 class UStateTreeAIComponent;

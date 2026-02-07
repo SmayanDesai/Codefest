@@ -15,11 +15,15 @@ public class Test : ModuleRules
                 "Engine",
                 "InputCore",
                 "AIModule",         // ensure AI APIs are available
-				"NavigationSystem"  // <-- add this so UNavigationSystemV1 links
-			}
+                "NavigationSystem",  // <-- add this so UNavigationSystemV1 links
+                "GameplayStateTreeModule", // ensure StateTree AI component API is available
+                "EnhancedInput" // Enhanced Input plugin for advanced input handling
+            }
         );
 
-        PrivateDependencyModuleNames.AddRange(new string[] { });
+        // Slate/SlateCore are required for SVirtualJoystick and other Slate UI widgets
+        // UMG is required for CreateWidget / UUserWidget usage
+        PrivateDependencyModuleNames.AddRange(new string[] { "Slate", "SlateCore", "UMG" });
 
         // Uncomment if you use Slate UI
         // PrivateDependencyModuleNames.AddRange(new string[] { "Slate", "SlateCore" });

@@ -3,14 +3,16 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "TestCharacter.h"
-#include "ShooterWeaponHolder.h"
+#include "../TestCharacter.h"
+#include "Weapons/ShooterWeaponHolder.h"
+#include "InputAction.h"
 #include "ShooterCharacter.generated.h"
 
 class AShooterWeapon;
 class UInputAction;
 class UInputComponent;
 class UPawnNoiseEmitterComponent;
+class UEnhancedInputComponent; // forward declare Enhanced Input component
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FBulletCountUpdatedDelegate, int32, MagazineSize, int32, Bullets);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FDamagedDelegate, float, LifePercent);

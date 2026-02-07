@@ -5,7 +5,7 @@
 #include "Camera/CameraComponent.h"
 #include "Kismet/KismetMathLibrary.h"
 #include "Engine/World.h"
-#include "ShooterGameMode.h"
+#include "../ShooterGameMode.h"
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "TimerManager.h"
@@ -109,7 +109,6 @@ void AShooterNPC::Die()
 	if (bIsDead)
 	{
 		return;
-		Destroy();
 	}
 
 	// raise the dead flag
